@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>引出生命周期</title>
+</head>
+
+<body>
+    <!-- 容器test -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库   必须最新引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react扩展库，用于react-dom操作DOM -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel，用于jsx转js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+
+
+    <script type="text/babel">
+        class Life extends React.Component {
+            state={
+                opacity:1
+            }
+            death = () => {
+                //卸载组件
+                ReactDOM.unmountComponentAtNode( document.getElementById('test'));
+            }
+            //componentDidMount    在组件挂载完成以后调用
+            componentDidMount(){
+                this.timer=setInterval(()=>{
+                    //获取原opacity的值
+                    let {opacity} =this.state
+                    //减小0.1
+                    opacity-= 0.1
+                    if(opacity<=0){
+                        opacity= 1
+                    }
+                    //设置新的透明度 opacity
+                    this.setState({opacity})
+                },200)
+            }
+            //组件卸载前调用
+            componentWillUnmount(){
+                //清除定时器
+                clearInterval(this.timer);
+            }
+            //render  调用时机：初始化渲染，状态state更新之后
+            render() {
+               
+                return (
+                    <div>
+                        <h2 style={{opacity:this.state.opacity}}>React学不会，怎么办？</h2>
+                        <button onClick={this.death}>不活了</button>
+                    </div>
+                )
+
+            }
+        }
+        ReactDOM.render(<Life />, document.getElementById('test'))
+    </script>
+
+</body>
+
+</html>

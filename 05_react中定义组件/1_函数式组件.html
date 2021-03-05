@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数式组件</title>
+</head>
+<body>
+     <!-- 容器test -->
+     <div id="test">
+    </div>
+    <!-- 引入react核心库   必须最新引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react扩展库，用于react-dom操作DOM -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel，用于jsx转js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel"> /* 此处必须写  babel*/
+    //创建函数式组件
+    function MyComponent(){
+        return <h2>我是用函数定义的组件（适用于简单组件的定义）</h2>
+    }
+
+    //渲染组件到页面
+    ReactDOM.render(<MyComponent/>,document.getElementById('test'))
+    </script>
+</body>
+</html>

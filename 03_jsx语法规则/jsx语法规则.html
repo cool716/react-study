@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsx语法规则</title>
+</head>
+<style>
+    .title{
+        background-color: green;
+        width: 200px;
+    }
+</style>
+
+<body>
+    <!-- 容器test -->
+    <div id="test">
+    </div>
+    <!-- 引入react核心库   必须最新引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react扩展库，用于react-dom操作DOM -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel，用于jsx转js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel"> /* 此处必须写  babel*/
+    const myId='titLe';
+    const myData='jsX语法规则';
+        //创建虚拟DOM
+        const VDOM = (
+            <h1 className='title' id={myId.toLowerCase()}>
+                <span style={{color:'white',fontSize:'40px'}}>{myData.toLowerCase()}</span>
+            </h1>
+        )
+
+        //渲染虚拟DOM到面
+        ReactDOM.render(VDOM, document.getElementById('test'));
+    </script>
+</body>
+
+</html>

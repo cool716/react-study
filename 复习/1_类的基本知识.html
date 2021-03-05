@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类的基本知识</title>
+</head>
+
+<body>
+    <script text="text/javascript">
+        //创建类
+        class Person {
+            //构造器中的this==>类的实例化对象
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            //一般方法
+            speak() {
+                console.log(`我叫${this.name},我今年${this.age}岁`);
+            }
+        }
+        // //实例化类 
+        // const p1 = new Person('张三',18);
+        // const p2 = new Person('李四',19);
+        // console.log(p1);
+        // console.log(p2);
+        // p1.speak();
+        // p2.speak();
+
+        //创建Student,继承Person
+        class Student extends Person {
+
+        }
+
+        const stu = new Student('小明', 12);
+        console.log(stu);
+    </script>
+
+</body>
+
+</html>

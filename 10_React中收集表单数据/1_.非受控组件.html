@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非受控组件</title>
+</head>
+
+<body>
+
+    <!-- 容器test -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库   必须最新引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react扩展库，用于react-dom操作DOM -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel，用于jsx转js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+
+
+    <script type="text/babel">
+
+        class Login  extends React.Component {
+           
+            halderSubmit=(event)=>{
+                event.preventDefault()
+                const {username,password}=this
+                alert(`姓名${username.value},密码：${password.value}`);
+            }
+           
+          
+            render() {
+                return (
+                    <form  onSubmit={this.halderSubmit}>
+                       用户名： <input ref={c=>this.username=c} type="text"  name="username"/>
+                       密码： <input  ref={c=>this.password=c}  type='password'  name="password" />
+                        <button >登陆</button>
+                    </form>
+
+                )
+            }
+        }
+        ReactDOM.render(<Login />, document.getElementById('test'));
+    </script>
+
+</body>
+
+</html>
